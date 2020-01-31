@@ -1,7 +1,6 @@
 package com.aruba.wifirssiobserver.network
 
 import com.squareup.moshi.Moshi
-import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -21,6 +20,7 @@ class NetworkFactory {
 
         okHttpClient = OkHttpClient.Builder()
             .addInterceptor(loggingInterceptor)
+            .retryOnConnectionFailure(true)
             .build()
 
         retrofitBuilder = Retrofit.Builder()
